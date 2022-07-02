@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<p th:text="'hello ' + ${name}">hello empty</p>
+<!--
+'hello ' + ${name} 여기 있는 값이 서버가 돌 때
+hello empty로 치환이 됨
+(예: hello-mvc?name=NaeRuMi 입력 시, hello NaeRuMi 노출
+서버 필요 없이 페이지 볼 때 사용함
+
+정적일 때에는 html 변환하지 않고 웹 브라우저에 노출했지만
+MVC, 템플릿 엔진 사용하면 html 변환해서 노출함
+-->
+</body>
+</html>
