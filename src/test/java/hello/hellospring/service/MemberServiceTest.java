@@ -1,9 +1,12 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -11,8 +14,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
-    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
+
+    // 테스트는 독립적으로 실행되어야 하기 때문에 실행할 때마다 new로 인해 각각 생성됨
+    @BeforeEach
+    public void beforeEach() {
+        memberRepository = new MemoryMemberRepository();
+
+        // MemberService 의 인스턴스를 만들기 위해 생성자를 호출하는데 memberRepository 가 필요하므로 같이 넣어줌
+        memberService = new MemberService(memberRepository);
+    }
 
     @AfterEach
     public void afterEach() {
