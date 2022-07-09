@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
     // 메모리 구현체니까 어딘가에 저장해야 하므로 Map<> 사용함

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -17,7 +16,7 @@ public class MemberService {
     // ()는 생성자를 호출할 때 필요한 값들
     // 직접 new로 생성하는게 아니고 외부에서 생성하도록 변경하므로 memberRepository 를 외부에서 넣어줌
     // 이걸 Dependency injection, 의존성 주입이라고 함
-    @Autowired
+
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
