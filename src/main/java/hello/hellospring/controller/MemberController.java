@@ -5,8 +5,11 @@ import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class MemberController {
@@ -34,5 +37,13 @@ public class MemberController {
 
         // 회원가입이 끝나면 홈 화면으로 돌려보냄
         return "redirect:/";
+    }
+
+    @GetMapping("/members")
+    public String list(Model model) {
+        List<Member> members = memberService.findMembers();
+        // model에 addAttribute로 인해 list의 members가 넘어가는데, 키가 members임 (초록색 글자)
+        model.addAttribute("members", members);
+        return "members/memberList";
     }
 }
